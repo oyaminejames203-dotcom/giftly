@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giftly — Thoughtful Gift Planning Companion</title>
+  <meta name="description"
+    content="A personal gift-planning companion to remember what loved ones cherish, organize gift ideas, manage occasions, and track your gift budget.">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 12v10H4V12" />
+          <path d="M2 7h20v5H2z" />
+          <path d="M12 22V7" />
+          <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+          <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+        </svg>
+      </div>
+      <span class="brand-name">Giftly</span>
+    </div>
+    <button id="mobile-menu-toggle" class="btn-icon mobile-toggle-btn" aria-label="Toggle navigation menu">
+      <svg class="hamburger-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Mobile Overlay -->
+  <div id="mobile-overlay" class="mobile-overlay"></div>
+
+  <div class="app-container">
+    <!-- Left Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-group">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 12v10H4V12" />
+              <path d="M2 7h20v5H2z" />
+              <path d="M12 22V7" />
+              <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+              <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1 class="brand-title">Giftly</h1>
+            <p class="brand-tagline">Thoughtful giving starts with paying attention.</p>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <button class="nav-link active" data-view="overview">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+              <span>Overview</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-view="people">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>People</span>
+              <span id="nav-count-people" class="nav-badge">0</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-view="notes">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                </path>
+              </svg>
+              <span>Thought Notes</span>
+              <span id="nav-count-notes" class="nav-badge">0</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-view="gifts">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                </path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+              <span>Gift Vault</span>
+              <span id="nav-count-gifts" class="nav-badge">0</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-view="occasions">
+              <svg class="nav-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>Occasions</span>
+              <span id="nav-count-occasions" class="nav-badge">0</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-quote">
+          <p class="quote-text">"The finest gift is the one that shows someone was listening."</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- ================= 1. OVERVIEW DASHBOARD VIEW ================= -->
+      <section id="view-overview" class="view-section active">
+        <!-- Welcome Banner -->
+        <div class="welcome-card">
+          <div class="welcome-info">
+            <span class="welcome-badge">Personal Giving Companion</span>
+            <h2 id="welcome-greeting" class="welcome-title">Welcome to Giftly</h2>
+            <p class="welcome-subtitle">Capture everyday hints, plan gifts ahead of time, and make every celebration
+              deeply personal.</p>
+          </div>
+          <div class="welcome-actions">
+            <button class="btn btn-primary" onclick="GiftlyApp.openGiftModal()">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              Add Gift
+            </button>
+            <button class="btn btn-secondary" onclick="GiftlyApp.openNoteModal()">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+              Record Thought
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Summary Metric Cards -->
+        <div class="metrics-grid">
+          <div class="metric-card" onclick="GiftlyApp.switchView('people')">
+            <div class="metric-icon-wrap metric-plum">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <div class="metric-content">
+              <span class="metric-label">Total Recipients</span>
+              <h3 id="stat-total-recipients" class="metric-value">0</h3>
+              <span class="metric-hint">People you celebrate</span>
+            </div>
+          </div>
+
+          <div class="metric-card" onclick="GiftlyApp.switchView('gifts')">
+            <div class="metric-icon-wrap metric-gold">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                </path>
+              </svg>
+            </div>
+            <div class="metric-content">
+              <span class="metric-label">Saved Gift Ideas</span>
+              <h3 id="stat-total-gifts" class="metric-value">0</h3>
+              <span class="metric-hint">Ideas in your vault</span>
+            </div>
+          </div>
+
+          <div class="metric-card" onclick="GiftlyApp.switchView('gifts', { filterStatus: 'Planned' })">
+            <div class="metric-icon-wrap metric-amber">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <div class="metric-content">
+              <span class="metric-label">Planned Gifts</span>
+              <h3 id="stat-planned-gifts" class="metric-value">0</h3>
+              <span class="metric-hint">Ready to purchase</span>
+            </div>
+          </div>
+
+          <div class="metric-card" onclick="GiftlyApp.switchView('gifts', { filterStatus: 'Purchased' })">
+            <div class="metric-icon-wrap metric-green">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <div class="metric-content">
+              <span class="metric-label">Purchased Gifts</span>
+              <h3 id="stat-purchased-gifts" class="metric-value">0</h3>
+              <span class="metric-hint">Bought and ready</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Budget Overview Section -->
+        <div class="dashboard-budget-card">
+          <div class="budget-header">
+            <div>
+              <h3 class="budget-title">Budget Overview</h3>
+              <p class="budget-subtitle">Tracking planned preparations and completed purchases</p>
+            </div>
+            <span class="currency-tag">Nigerian Naira (₦)</span>
+          </div>
+
+          <div class="budget-stats-row">
+            <div class="budget-item">
+              <span class="budget-label">Total Estimated Budget</span>
+              <h4 id="budget-total-estimated" class="budget-amount">₦0</h4>
+              <p class="budget-note">Planned &amp; Purchased gifts</p>
+            </div>
+            <div class="budget-divider"></div>
+            <div class="budget-item">
+              <span class="budget-label">Total Amount Spent</span>
+              <h4 id="budget-total-spent" class="budget-amount text-success">₦0</h4>
+              <p class="budget-note">Purchased gifts to date</p>
+            </div>
+            <div class="budget-divider"></div>
+            <div class="budget-item">
+              <span class="budget-label">Remaining Planned</span>
+              <h4 id="budget-remaining-planned" class="budget-amount text-muted">₦0</h4>
+              <p class="budget-note">Pending purchase</p>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="budget-progress-container">
+            <div class="budget-progress-labels">
+              <span id="budget-progress-text">0% of estimated budget spent</span>
+              <span id="budget-progress-counts">0 of 0 gifts purchased</span>
+            </div>
+            <div class="progress-bar-track">
+              <div id="budget-progress-fill" class="progress-bar-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Getting Started Guidance (Overview) -->
+        <div id="overview-getting-started" class="getting-started-card">
+          <div class="getting-started-header">
+            <div class="getting-started-title-group">
+              <div class="getting-started-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+              </div>
+              <div>
+                <h3 class="getting-started-title">Getting Started with Giftly</h3>
+                <p class="getting-started-desc">Four simple steps to capture ideas and plan thoughtful gifts.</p>
+              </div>
+            </div>
+          </div>
+          <div class="getting-started-grid">
+            <div class="getting-started-step" onclick="GiftlyApp.openRecipientModal()">
+              <div class="step-badge">1</div>
+              <div class="step-body">
+                <h4 class="step-title">Add a Recipient</h4>
+                <p class="step-desc">Save preferences, sizes, and interests for loved ones.</p>
+                <button class="btn btn-secondary btn-sm"
+                  onclick="event.stopPropagation(); GiftlyApp.openRecipientModal()">+ Add Recipient</button>
+              </div>
+            </div>
+            <div class="getting-started-step" onclick="GiftlyApp.openNoteModal()">
+              <div class="step-badge">2</div>
+              <div class="step-body">
+                <h4 class="step-title">Record a Thought</h4>
+                <p class="step-desc">Jot down casual wishes and subtle hints people mention.</p>
+                <button class="btn btn-secondary btn-sm" onclick="event.stopPropagation(); GiftlyApp.openNoteModal()">+
+                  Record Thought</button>
+              </div>
+            </div>
+            <div class="getting-started-step" onclick="GiftlyApp.openGiftModal()">
+              <div class="step-badge">3</div>
+              <div class="step-body">
+                <h4 class="step-title">Add a Gift</h4>
+                <p class="step-desc">Save gift ideas in your vault, set budgets, and track progress.</p>
+                <button class="btn btn-secondary btn-sm" onclick="event.stopPropagation(); GiftlyApp.openGiftModal()">+
+                  Add Gift</button>
+              </div>
+            </div>
+            <div class="getting-started-step" onclick="GiftlyApp.openOccasionModal()">
+              <div class="step-badge">4</div>
+              <div class="step-body">
+                <h4 class="step-title">Add an Occasion</h4>
+                <p class="step-desc">Keep birthdays and anniversaries handy with countdowns.</p>
+                <button class="btn btn-secondary btn-sm"
+                  onclick="event.stopPropagation(); GiftlyApp.openOccasionModal()">+ Add Occasion</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Dual Column (Upcoming Occasions & Recent Thought Notes) -->
+        <div class="dashboard-dual-grid">
+          <!-- Upcoming Occasions Column -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <div class="dash-card-title-group">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <h3>Upcoming Occasions</h3>
+              </div>
+              <button class="btn-text" onclick="GiftlyApp.switchView('occasions')">View All</button>
+            </div>
+            <div id="dashboard-occasions-list" class="dash-list">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Recent Thought Notes Column -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <div class="dash-card-title-group">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                  </path>
+                </svg>
+                <h3>Recent Thought Notes</h3>
+              </div>
+              <button class="btn-text" onclick="GiftlyApp.switchView('notes')">View All</button>
+            </div>
+            <div id="dashboard-notes-list" class="dash-list">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 2. PEOPLE VIEW ================= -->
+      <section id="view-people" class="view-section">
+        <div class="section-top-bar">
+          <div>
+            <h2 class="section-title">People</h2>
+            <p class="section-desc">Manage profiles, preferences, and gift history for those you care about.</p>
+          </div>
+          <button class="btn btn-primary" onclick="GiftlyApp.openRecipientModal()">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add Recipient
+          </button>
+        </div>
+
+        <!-- Controls: Search & Filter -->
+        <div class="filter-bar">
+          <div class="search-input-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="search-people" class="form-input search-input"
+              placeholder="Search recipients by name...">
+            <button id="clear-search-people" class="btn-clear-search hidden" aria-label="Clear search">&times;</button>
+          </div>
+
+          <div class="filter-controls">
+            <select id="filter-people-relationship" class="form-select filter-select">
+              <option value="">All Relationships</option>
+              <option value="Friend">Friend</option>
+              <option value="Sister">Sister</option>
+              <option value="Brother">Brother</option>
+              <option value="Partner">Partner</option>
+              <option value="Mother">Mother</option>
+              <option value="Father">Father</option>
+              <option value="Other family member">Other family member</option>
+              <option value="Colleague">Colleague</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- People Grid Container -->
+        <div id="people-grid" class="cards-grid">
+          <!-- Rendered via JS -->
+        </div>
+      </section>
+
+      <!-- ================= 3. THOUGHT NOTES VIEW ================= -->
+      <section id="view-notes" class="view-section">
+        <div class="section-top-bar">
+          <div>
+            <h2 class="section-title">Thought Notes</h2>
+            <p class="section-desc">Record casual hints, wishes, and interests heard during everyday conversations.</p>
+          </div>
+          <button class="btn btn-primary" onclick="GiftlyApp.openNoteModal()">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add Thought Note
+          </button>
+        </div>
+
+        <!-- Controls: Search & Filter -->
+        <div class="filter-bar">
+          <div class="search-input-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="search-notes" class="form-input search-input"
+              placeholder="Search notes by title, details or recipient...">
+            <button id="clear-search-notes" class="btn-clear-search hidden" aria-label="Clear search">&times;</button>
+          </div>
+
+          <div class="filter-controls">
+            <select id="filter-notes-recipient" class="form-select filter-select">
+              <option value="">All Recipients</option>
+              <!-- Populated dynamically -->
+            </select>
+
+            <select id="filter-notes-category" class="form-select filter-select">
+              <option value="">All Categories</option>
+              <option value="Things they want">Things they want</option>
+              <option value="Favourite things">Favourite things</option>
+              <option value="Interests and hobbies">Interests and hobbies</option>
+              <option value="Experiences">Experiences</option>
+              <option value="Things to avoid">Things to avoid</option>
+              <option value="Other">Other</option>
+            </select>
+
+            <select id="sort-notes" class="form-select filter-select">
+              <option value="date-desc">Newest First</option>
+              <option value="date-asc">Oldest First</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Notes Grid Container -->
+        <div id="notes-grid" class="cards-grid">
+          <!-- Rendered via JS -->
+        </div>
+      </section>
+
+      <!-- ================= 4. GIFT VAULT VIEW ================= -->
+      <section id="view-gifts" class="view-section">
+        <div class="section-top-bar">
+          <div>
+            <h2 class="section-title">Gift Vault</h2>
+            <p class="section-desc">Store, plan, and manage every gift idea with budgets and progress statuses.</p>
+          </div>
+          <button class="btn btn-primary" onclick="GiftlyApp.openGiftModal()">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add Gift Idea
+          </button>
+        </div>
+
+        <!-- Controls: Search & Filter -->
+        <div class="filter-bar">
+          <div class="search-input-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="search-gifts" class="form-input search-input"
+              placeholder="Search gifts by name or recipient...">
+            <button id="clear-search-gifts" class="btn-clear-search hidden" aria-label="Clear search">&times;</button>
+          </div>
+
+          <div class="filter-controls">
+            <select id="filter-gifts-status" class="form-select filter-select">
+              <option value="">All Statuses</option>
+              <option value="Planned">Planned</option>
+              <option value="Purchased">Purchased</option>
+              <option value="Gifted">Gifted</option>
+            </select>
+
+            <select id="filter-gifts-occasion" class="form-select filter-select">
+              <option value="">All Occasions</option>
+              <option value="Birthday">Birthday</option>
+              <option value="Anniversary">Anniversary</option>
+              <option value="Wedding">Wedding</option>
+              <option value="Valentine's Day">Valentine's Day</option>
+              <option value="Christmas">Christmas</option>
+              <option value="Mother's Day">Mother's Day</option>
+              <option value="Father's Day">Father's Day</option>
+              <option value="Graduation">Graduation</option>
+              <option value="Other">Other</option>
+            </select>
+
+            <select id="filter-gifts-recipient" class="form-select filter-select">
+              <option value="">All Recipients</option>
+              <!-- Populated dynamically -->
+            </select>
+
+            <select id="sort-gifts" class="form-select filter-select">
+              <option value="date-desc">Newest First</option>
+              <option value="budget-desc">Budget: High to Low</option>
+              <option value="budget-asc">Budget: Low to High</option>
+              <option value="name-asc">Gift Name (A-Z)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Gifts Grid Container -->
+        <div id="gifts-grid" class="cards-grid">
+          <!-- Rendered via JS -->
+        </div>
+      </section>
+
+      <!-- ================= 5. OCCASIONS VIEW ================= -->
+      <section id="view-occasions" class="view-section">
+        <div class="section-top-bar">
+          <div>
+            <h2 class="section-title">Occasions</h2>
+            <p class="section-desc">Keep track of important milestones, birthdays, and celebrations with automated
+              countdowns.</p>
+          </div>
+          <button class="btn btn-primary" onclick="GiftlyApp.openOccasionModal()">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add Occasion
+          </button>
+        </div>
+
+        <!-- Controls: Search & Filter -->
+        <div class="filter-bar">
+          <div class="search-input-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="search-occasions" class="form-input search-input"
+              placeholder="Search occasions by name or recipient...">
+            <button id="clear-search-occasions" class="btn-clear-search hidden"
+              aria-label="Clear search">&times;</button>
+          </div>
+
+          <div class="filter-controls">
+            <select id="filter-occasions-type" class="form-select filter-select">
+              <option value="">All Occasion Types</option>
+              <option value="Birthday">Birthday</option>
+              <option value="Anniversary">Anniversary</option>
+              <option value="Wedding">Wedding</option>
+              <option value="Valentine's Day">Valentine's Day</option>
+              <option value="Christmas">Christmas</option>
+              <option value="Mother's Day">Mother's Day</option>
+              <option value="Father's Day">Father's Day</option>
+              <option value="Graduation">Graduation</option>
+              <option value="Other">Other</option>
+            </select>
+
+            <select id="filter-occasions-recipient" class="form-select filter-select">
+              <option value="">All Recipients</option>
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Occasions Grid Container -->
+        <div id="occasions-grid" class="cards-grid">
+          <!-- Rendered via JS -->
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ================= MODALS ================= -->
+
+  <!-- 1. Recipient Modal (Add & Edit) -->
+  <div id="modal-recipient" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="modal-recipient-title" class="modal-title">Add Recipient</h3>
+        <button class="btn-icon modal-close-btn" onclick="GiftlyApp.closeModal('modal-recipient')"
+          aria-label="Close modal">&times;</button>
+      </div>
+      <form id="form-recipient" class="modal-form" novalidate>
+        <input type="hidden" id="recipient-id">
+        <div class="form-body">
+          <div class="form-group">
+            <label for="recipient-name" class="form-label required">Full Name</label>
+            <input type="text" id="recipient-name" class="form-input" placeholder="e.g. Amara Eze" required>
+            <span class="form-error" id="error-recipient-name"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="recipient-relationship" class="form-label required">Relationship</label>
+            <select id="recipient-relationship" class="form-select" required>
+              <option value="">Select relationship</option>
+              <option value="Friend">Friend</option>
+              <option value="Sister">Sister</option>
+              <option value="Brother">Brother</option>
+              <option value="Partner">Partner</option>
+              <option value="Mother">Mother</option>
+              <option value="Father">Father</option>
+              <option value="Other family member">Other family member</option>
+              <option value="Colleague">Colleague</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="form-error" id="error-recipient-relationship"></span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-6">
+              <label for="recipient-birthday" class="form-label">Birthday</label>
+              <input type="date" id="recipient-birthday" class="form-input">
+            </div>
+            <div class="form-group col-6">
+              <label for="recipient-favourite-colour" class="form-label">Favourite Colour</label>
+              <input type="text" id="recipient-favourite-colour" class="form-input"
+                placeholder="e.g. Lavender, Emerald Green">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="recipient-interests" class="form-label">Interests &amp; Hobbies</label>
+            <textarea id="recipient-interests" class="form-textarea" rows="2"
+              placeholder="e.g. Pottery, reading historical fiction, pour-over coffee, hiking"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="recipient-favourite-things" class="form-label">Favourite Things</label>
+            <textarea id="recipient-favourite-things" class="form-textarea" rows="2"
+              placeholder="e.g. Scented soy candles, dark chocolate, artisanal ceramics"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="recipient-notes" class="form-label">Additional Notes</label>
+            <textarea id="recipient-notes" class="form-textarea" rows="2"
+              placeholder="e.g. Ring size 6; allergic to nickel; loves handwritten notes"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"
+            onclick="GiftlyApp.closeModal('modal-recipient')">Cancel</button>
+          <button type="submit" id="btn-save-recipient" class="btn btn-primary">Save Recipient</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Thought Note Modal (Add & Edit) -->
+  <div id="modal-note" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="modal-note-title" class="modal-title">Add Thought Note</h3>
+        <button class="btn-icon modal-close-btn" onclick="GiftlyApp.closeModal('modal-note')"
+          aria-label="Close modal">&times;</button>
+      </div>
+      <form id="form-note" class="modal-form" novalidate>
+        <input type="hidden" id="note-id">
+        <div class="form-body">
+          <div class="form-group">
+            <label for="note-title" class="form-label required">Note Title</label>
+            <input type="text" id="note-title" class="form-input" placeholder="e.g. Mentioned wanting to learn pottery"
+              required>
+            <span class="form-error" id="error-note-title"></span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-6">
+              <label for="note-recipient" class="form-label required">Recipient</label>
+              <select id="note-recipient" class="form-select" required>
+                <option value="">Select recipient</option>
+                <!-- Populated dynamically -->
+              </select>
+              <span class="form-error" id="error-note-recipient"></span>
+            </div>
+
+            <div class="form-group col-6">
+              <label for="note-category" class="form-label required">Category</label>
+              <select id="note-category" class="form-select" required>
+                <option value="">Select category</option>
+                <option value="Things they want">Things they want</option>
+                <option value="Favourite things">Favourite things</option>
+                <option value="Interests and hobbies">Interests and hobbies</option>
+                <option value="Experiences">Experiences</option>
+                <option value="Things to avoid">Things to avoid</option>
+                <option value="Other">Other</option>
+              </select>
+              <span class="form-error" id="error-note-category"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="note-date" class="form-label required">Date Captured</label>
+            <input type="date" id="note-date" class="form-input" required>
+            <span class="form-error" id="error-note-date"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="note-description" class="form-label required">Description &amp; Details</label>
+            <textarea id="note-description" class="form-textarea" rows="4"
+              placeholder="What did they mention? Context, specifics, sizes, preferences, or casual hints..."
+              required></textarea>
+            <span class="form-error" id="error-note-description"></span>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="GiftlyApp.closeModal('modal-note')">Cancel</button>
+          <button type="submit" id="btn-save-note" class="btn btn-primary">Save Thought Note</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Gift Modal (Add & Edit) -->
+  <div id="modal-gift" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="modal-gift-title" class="modal-title">Add Gift Idea</h3>
+        <button class="btn-icon modal-close-btn" onclick="GiftlyApp.closeModal('modal-gift')"
+          aria-label="Close modal">&times;</button>
+      </div>
+      <form id="form-gift" class="modal-form" novalidate>
+        <input type="hidden" id="gift-id">
+        <div class="form-body">
+          <div class="form-group">
+            <label for="gift-name" class="form-label required">Gift Name</label>
+            <input type="text" id="gift-name" class="form-input" placeholder="e.g. Weekend Wheel-Throwing Pottery Class"
+              required>
+            <span class="form-error" id="error-gift-name"></span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-6">
+              <label for="gift-recipient" class="form-label required">Recipient</label>
+              <select id="gift-recipient" class="form-select" required>
+                <option value="">Select recipient</option>
+                <!-- Populated dynamically -->
+              </select>
+              <span class="form-error" id="error-gift-recipient"></span>
+            </div>
+
+            <div class="form-group col-6">
+              <label for="gift-occasion" class="form-label required">Occasion</label>
+              <select id="gift-occasion" class="form-select" required>
+                <option value="">Select occasion</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Anniversary">Anniversary</option>
+                <option value="Wedding">Wedding</option>
+                <option value="Valentine's Day">Valentine's Day</option>
+                <option value="Christmas">Christmas</option>
+                <option value="Mother's Day">Mother's Day</option>
+                <option value="Father's Day">Father's Day</option>
+                <option value="Graduation">Graduation</option>
+                <option value="Other">Other</option>
+              </select>
+              <span class="form-error" id="error-gift-occasion"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-6">
+              <label for="gift-budget" class="form-label required">Estimated Budget (₦)</label>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">₦</span>
+                <input type="number" id="gift-budget" class="form-input input-with-prefix" min="0" step="any"
+                  placeholder="35000" required>
+              </div>
+              <span class="form-error" id="error-gift-budget"></span>
+            </div>
+
+            <div class="form-group col-6">
+              <label for="gift-status" class="form-label required">Gift Status</label>
+              <select id="gift-status" class="form-select" required>
+                <option value="Planned">Planned</option>
+                <option value="Purchased">Purchased</option>
+                <option value="Gifted">Gifted</option>
+              </select>
+              <span class="form-error" id="error-gift-status"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="gift-link" class="form-label">Gift Link (Optional)</label>
+            <input type="url" id="gift-link" class="form-input" placeholder="https://example.com/product-item">
+          </div>
+
+          <div class="form-group">
+            <label for="gift-description" class="form-label">Description &amp; Notes (Optional)</label>
+            <textarea id="gift-description" class="form-textarea" rows="3"
+              placeholder="Specific workshop details, color preference, order notes, or promo code..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="GiftlyApp.closeModal('modal-gift')">Cancel</button>
+          <button type="submit" id="btn-save-gift" class="btn btn-primary">Save Gift</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. Occasion Modal (Add & Edit) -->
+  <div id="modal-occasion" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="modal-occasion-title" class="modal-title">Add Occasion</h3>
+        <button class="btn-icon modal-close-btn" onclick="GiftlyApp.closeModal('modal-occasion')"
+          aria-label="Close modal">&times;</button>
+      </div>
+      <form id="form-occasion" class="modal-form" novalidate>
+        <input type="hidden" id="occasion-id">
+        <div class="form-body">
+          <div class="form-group">
+            <label for="occasion-name" class="form-label required">Occasion Name</label>
+            <input type="text" id="occasion-name" class="form-input" placeholder="e.g. Amara's 28th Birthday" required>
+            <span class="form-error" id="error-occasion-name"></span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-6">
+              <label for="occasion-recipient" class="form-label required">Recipient</label>
+              <select id="occasion-recipient" class="form-select" required>
+                <option value="">Select recipient</option>
+                <!-- Populated dynamically -->
+              </select>
+              <span class="form-error" id="error-occasion-recipient"></span>
+            </div>
+
+            <div class="form-group col-6">
+              <label for="occasion-type" class="form-label required">Occasion Type</label>
+              <select id="occasion-type" class="form-select" required>
+                <option value="">Select type</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Anniversary">Anniversary</option>
+                <option value="Wedding">Wedding</option>
+                <option value="Valentine's Day">Valentine's Day</option>
+                <option value="Christmas">Christmas</option>
+                <option value="Mother's Day">Mother's Day</option>
+                <option value="Father's Day">Father's Day</option>
+                <option value="Graduation">Graduation</option>
+                <option value="Other">Other</option>
+              </select>
+              <span class="form-error" id="error-occasion-type"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="occasion-date" class="form-label required">Date</label>
+            <input type="date" id="occasion-date" class="form-input" required>
+            <span class="form-error" id="error-occasion-date"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="occasion-notes" class="form-label">Optional Notes</label>
+            <textarea id="occasion-notes" class="form-textarea" rows="3"
+              placeholder="e.g. Dinner reservations, milestone celebration plans, delivery reminders..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"
+            onclick="GiftlyApp.closeModal('modal-occasion')">Cancel</button>
+          <button type="submit" id="btn-save-occasion" class="btn btn-primary">Save Occasion</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 5. Recipient Full Profile Detail Modal -->
+  <div id="modal-recipient-profile" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-large">
+      <div class="modal-header">
+        <div class="profile-header-info">
+          <div id="profile-avatar" class="avatar avatar-large">AE</div>
+          <div>
+            <h3 id="profile-name" class="modal-title">Recipient Name</h3>
+            <span id="profile-relationship" class="badge badge-subtle">Relationship</span>
+          </div>
+        </div>
+        <div class="profile-header-actions">
+          <button id="profile-edit-btn" class="btn btn-secondary btn-sm">Edit Profile</button>
+          <button class="btn-icon modal-close-btn" onclick="GiftlyApp.closeModal('modal-recipient-profile')"
+            aria-label="Close modal">&times;</button>
+        </div>
+      </div>
+
+      <div class="modal-body profile-body">
+        <!-- Profile Preferences Card -->
+        <div class="profile-meta-card">
+          <div class="profile-meta-item" id="profile-birthday-wrap">
+            <span class="meta-label">Birthday:</span>
+            <span id="profile-birthday" class="meta-value">Not specified</span>
+          </div>
+          <div class="profile-meta-item" id="profile-colour-wrap">
+            <span class="meta-label">Favourite Colour:</span>
+            <span id="profile-colour" class="meta-value">Not specified</span>
+          </div>
+          <div class="profile-meta-item">
+            <span class="meta-label">Interests &amp; Hobbies:</span>
+            <p id="profile-interests" class="meta-text">None specified yet.</p>
+          </div>
+          <div class="profile-meta-item">
+            <span class="meta-label">Favourite Things:</span>
+            <p id="profile-favourite-things" class="meta-text">None specified yet.</p>
+          </div>
+          <div class="profile-meta-item">
+            <span class="meta-label">Additional Notes:</span>
+            <p id="profile-notes" class="meta-text">None specified yet.</p>
+          </div>
+        </div>
+
+        <!-- Linked Records Tabs/Sections -->
+        <div class="profile-sections">
+          <!-- Thought Notes for this Recipient -->
+          <div class="profile-section-block">
+            <div class="block-header">
+              <div class="block-title-wrap">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                  </path>
+                </svg>
+                <h4>Thought Notes (<span id="profile-notes-count">0</span>)</h4>
+              </div>
+              <button id="profile-add-note-btn" class="btn btn-secondary btn-sm">+ Add Note</button>
+            </div>
+            <div id="profile-notes-list" class="profile-sublist">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Gifts for this Recipient -->
+          <div class="profile-section-block">
+            <div class="block-header">
+              <div class="block-title-wrap">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                  </path>
+                </svg>
+                <h4>Gifts in Vault (<span id="profile-gifts-count">0</span>)</h4>
+              </div>
+              <button id="profile-add-gift-btn" class="btn btn-secondary btn-sm">+ Add Gift</button>
+            </div>
+            <div id="profile-gifts-list" class="profile-sublist">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Occasions for this Recipient -->
+          <div class="profile-section-block">
+            <div class="block-header">
+              <div class="block-title-wrap">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <h4>Occasions (<span id="profile-occasions-count">0</span>)</h4>
+              </div>
+              <button id="profile-add-occasion-btn" class="btn btn-secondary btn-sm">+ Add Occasion</button>
+            </div>
+            <div id="profile-occasions-list" class="profile-sublist">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="GiftlyApp.closeModal('modal-recipient-profile')">Close
+          Profile</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Confirmation Modal (Generic & Safe Cascading Deletes) -->
+  <div id="modal-confirm" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-sm">
+      <div class="modal-header">
+        <div class="confirm-icon-wrap" id="confirm-icon-wrap">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+        </div>
+        <h3 id="confirm-title" class="modal-title">Confirm Action</h3>
+      </div>
+      <div class="modal-body">
+        <p id="confirm-message" class="confirm-message-text">Are you sure you want to proceed?</p>
+        <div id="confirm-extra-warning" class="confirm-alert-box hidden">
+          <!-- Populated if recipient deletion will cascade delete records -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btn-confirm-cancel" class="btn btn-secondary">Cancel</button>
+        <button type="button" id="btn-confirm-proceed" class="btn btn-danger">Confirm Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

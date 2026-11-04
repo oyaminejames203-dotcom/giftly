@@ -7,7 +7,7 @@
   <title>Giftly — Thoughtful Gift Planning Companion</title>
   <meta name="description"
     content="A personal gift-planning companion to remember what loved ones cherish, organize gift ideas, manage occasions, and track your gift budget.">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 
 <body>
@@ -660,16 +660,10 @@
             <span class="form-error" id="error-recipient-relationship"></span>
           </div>
 
-          <div class="form-row">
-            <div class="form-group col-6">
-              <label for="recipient-birthday" class="form-label">Birthday</label>
-              <input type="date" id="recipient-birthday" class="form-input">
-            </div>
-            <div class="form-group col-6">
-              <label for="recipient-favourite-colour" class="form-label">Favourite Colour</label>
-              <input type="text" id="recipient-favourite-colour" class="form-input"
-                placeholder="e.g. Lavender, Emerald Green">
-            </div>
+          <div class="form-group">
+            <label for="recipient-favourite-colour" class="form-label">Favourite Colour</label>
+            <input type="text" id="recipient-favourite-colour" class="form-input"
+              placeholder="e.g. Lavender, Emerald Green">
           </div>
 
           <div class="form-group">
@@ -942,10 +936,6 @@
       <div class="modal-body profile-body">
         <!-- Profile Preferences Card -->
         <div class="profile-meta-card">
-          <div class="profile-meta-item" id="profile-birthday-wrap">
-            <span class="meta-label">Birthday:</span>
-            <span id="profile-birthday" class="meta-value">Not specified</span>
-          </div>
           <div class="profile-meta-item" id="profile-colour-wrap">
             <span class="meta-label">Favourite Colour:</span>
             <span id="profile-colour" class="meta-value">Not specified</span>
@@ -1063,6 +1053,23 @@
   <!-- Toast Notification Container -->
   <div id="toast-container" class="toast-container" aria-live="polite"></div>
 
+  <script>
+    // Keep modal geometry inside the portion of the screen Safari is actually showing.
+    (function () {
+      function syncGiftlyVisualViewport() {
+        if (!window.visualViewport) return;
+        const viewport = window.visualViewport;
+        document.documentElement.style.setProperty('--giftly-visual-height', viewport.height + 'px');
+        document.documentElement.style.setProperty('--giftly-visual-top', viewport.offsetTop + 'px');
+      }
+      syncGiftlyVisualViewport();
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', syncGiftlyVisualViewport);
+        window.visualViewport.addEventListener('scroll', syncGiftlyVisualViewport);
+      }
+      window.addEventListener('orientationchange', function () { setTimeout(syncGiftlyVisualViewport, 100); });
+    })();
+  </script>
   <script src="script.js"></script>
 </body>
 

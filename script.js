@@ -582,6 +582,16 @@
           ? '<option value="">All Recipients</option>'
           : '<option value="">Select recipient</option>';
 
+        if (recipients.length === 0) {
+          const emptyOption = document.createElement('option');
+          emptyOption.value = '';
+          emptyOption.disabled = true;
+          emptyOption.textContent = isFilter
+            ? 'No recipients added yet'
+            : 'Add a recipient in People first';
+          sel.appendChild(emptyOption);
+        }
+
         recipients.forEach(r => {
           const opt = document.createElement('option');
           opt.value = r.id;
@@ -816,8 +826,7 @@
         const personGiftsCount = gifts.filter(g => g.recipientId === person.id).length;
         const personOccasionsCount = occasions.filter(o => o.recipientId === person.id).length;
 
-        const birthdayFormatted = person.birthday ? formatHumanDate(person.birthday) : null;
-        const interestsPreview = person.interests
+          const interestsPreview = person.interests
           ? (person.interests.length > 75 ? person.interests.substring(0, 75) + '...' : person.interests)
           : null;
 
@@ -834,17 +843,6 @@
             </div>
 
             <div class="person-card-body">
-              ${birthdayFormatted ? `
-                <div class="person-info-row">
-                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                  </svg>
-                  <span>Birthday: <strong>${birthdayFormatted}</strong></span>
-                </div>
-              ` : ''}
-
               ${person.favouriteColour ? `
                 <div class="person-info-row">
                   <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
@@ -1488,7 +1486,6 @@
         if (idInput) idInput.value = data.id;
         document.getElementById('recipient-name').value = data.name || '';
         document.getElementById('recipient-relationship').value = data.relationship || '';
-        document.getElementById('recipient-birthday').value = data.birthday || '';
         document.getElementById('recipient-favourite-colour').value = data.favouriteColour || '';
         document.getElementById('recipient-interests').value = data.interests || '';
         document.getElementById('recipient-favourite-things').value = data.favouriteThings || '';
@@ -1650,13 +1647,11 @@
       }
 
       // Metadata preferences
-      const bdayEl = document.getElementById('profile-birthday');
       const colEl = document.getElementById('profile-colour');
       const intEl = document.getElementById('profile-interests');
       const favEl = document.getElementById('profile-favourite-things');
       const notesEl = document.getElementById('profile-notes');
 
-      if (bdayEl) bdayEl.textContent = recipient.birthday ? formatHumanDate(recipient.birthday) : 'Not specified';
       if (colEl) colEl.textContent = recipient.favouriteColour || 'Not specified';
       if (intEl) intEl.textContent = recipient.interests || 'None specified yet.';
       if (favEl) favEl.textContent = recipient.favouriteThings || 'None specified yet.';
@@ -1950,7 +1945,6 @@
             id: id || undefined,
             name: nameVal,
             relationship: relVal,
-            birthday: document.getElementById('recipient-birthday').value || '',
             favouriteColour: document.getElementById('recipient-favourite-colour').value.trim(),
             interests: document.getElementById('recipient-interests').value.trim(),
             favouriteThings: document.getElementById('recipient-favourite-things').value.trim(),

@@ -2306,6 +2306,63 @@ textarea {
   }
 }
 
+
+/* Mobile modal sizing and actions */
+@media (max-width: 600px) {
+  .modal-backdrop {
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    overflow-y: auto;
+  }
+
+  .modal-dialog,
+  .modal-dialog-sm,
+  .modal-dialog-large {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 1.5rem);
+    max-height: calc(100dvh - 1.5rem);
+    min-width: 0;
+  }
+
+  .modal-form {
+    min-height: 0;
+  }
+
+  .modal-form .form-body,
+  .modal-body {
+    min-height: 0;
+    max-height: none;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .modal-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+    padding: 1rem;
+    flex-shrink: 0;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+    max-width: none;
+    white-space: normal;
+    min-height: 48px;
+  }
+
+  #modal-confirm .modal-header {
+    padding: 1rem 1.1rem;
+  }
+
+  #modal-confirm .modal-body {
+    padding: 1.1rem;
+  }
+}
+
 @media (max-width: 480px) {
   .metrics-grid {
     grid-template-columns: 1fr;
@@ -2338,5 +2395,593 @@ textarea {
     right: 1rem;
     bottom: 1rem;
     max-width: none;
+  }
+}
+
+/* ===================================================================
+   GIFTLY MOBILE QA CORRECTIONS
+   Targeted overrides; desktop styling and existing app behaviour kept.
+   =================================================================== */
+
+@media (max-width: 768px) {
+  /* Keep the closed drawer completely off-canvas on iOS Safari.
+     The border was remaining visible as a vertical line. */
+  .sidebar {
+    left: 0;
+    width: min(var(--sidebar-width), 84vw);
+    max-width: 320px;
+    transform: translate3d(-105%, 0, 0);
+    border-right: 0;
+    visibility: hidden;
+    transition: transform var(--transition-normal), visibility var(--transition-normal);
+    will-change: transform;
+  }
+
+  .sidebar.mobile-open {
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+    border-right: 1px solid var(--color-border);
+  }
+
+  .mobile-overlay {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  /* Prevent children of a view from forcing the document wider. */
+  .app-container,
+  .main-content,
+  .view-section,
+  #view-people,
+  #view-notes,
+  #view-gifts,
+  #view-occasions,
+  .cards-grid,
+  .content-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .main-content {
+    width: 100%;
+  }
+
+  #view-gifts .filter-bar,
+  #view-gifts .filter-controls {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  #view-gifts .filter-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* The quick status control should size to its label, not fill the card. */
+  .gift-card-header {
+    min-width: 0;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .gift-card-header > .badge {
+    flex: 0 0 auto;
+  }
+
+  .gift-status-select {
+    display: inline-block;
+    width: auto !important;
+    min-width: 112px;
+    max-width: 145px;
+    flex: 0 1 auto;
+    min-height: 40px;
+    padding: 0.35rem 1.75rem 0.35rem 0.75rem;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  /* Make native date controls occupy the same width as other form fields. */
+  .modal-form .form-group,
+  .modal-form .form-input[type="date"],
+  .modal-form input[type="date"] {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .modal-form input[type="date"] {
+    display: block;
+    min-height: 48px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+
+/* Mobile modal geometry and independent scrolling.
+   Use dynamic viewport units so Safari's browser chrome is accounted for. */
+@media (max-width: 600px) {
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    padding:
+      max(16px, env(safe-area-inset-top))
+      16px
+      max(16px, env(safe-area-inset-bottom));
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .modal-dialog,
+  .modal-dialog-sm,
+  .modal-dialog-large {
+    width: 100%;
+    max-width: 480px;
+    min-width: 0;
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 32px);
+    height: auto;
+    margin: auto;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  #modal-recipient-profile .modal-dialog,
+  #modal-recipient-profile .modal-dialog-large {
+    max-width: 560px;
+  }
+
+  #modal-confirm .modal-dialog,
+  #modal-confirm .modal-dialog-sm {
+    max-width: 420px;
+    max-height: min(560px, calc(100dvh - 40px));
+  }
+
+  .modal-header {
+    flex: 0 0 auto;
+    padding: 1rem 1.1rem;
+  }
+
+  .modal-form {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .modal-form .form-body,
+  .modal-body,
+  #modal-recipient-profile .profile-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: none;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    padding: 1.1rem;
+  }
+
+  .modal-footer {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+    padding: 0.85rem 1rem calc(0.85rem + env(safe-area-inset-bottom));
+    background-color: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+    max-width: none;
+    min-height: 48px;
+    white-space: normal;
+  }
+
+  #modal-confirm .modal-header {
+    padding: 1rem 1.1rem;
+  }
+
+  #modal-confirm .modal-body {
+    padding: 1.1rem;
+  }
+
+  #modal-recipient-profile .modal-header {
+    gap: 0.6rem;
+    padding: 0.85rem 1rem;
+  }
+
+  #modal-recipient-profile .profile-header-info {
+    min-width: 0;
+    gap: 0.65rem;
+  }
+
+  #modal-recipient-profile .profile-header-actions {
+    flex-shrink: 0;
+    gap: 0.25rem;
+  }
+
+  #modal-recipient-profile .avatar-large {
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+  }
+
+  #modal-recipient-profile .modal-title {
+    font-size: 1.05rem;
+  }
+
+  #modal-recipient-profile .profile-header-actions .btn {
+    padding: 0.4rem 0.55rem;
+    font-size: 0.75rem;
+  }
+
+  /* Form controls share a consistent tap height on mobile. */
+  .modal-form .form-input,
+  .modal-form .form-select,
+  .modal-form select,
+  .filter-select {
+    min-height: 48px;
+    height: 48px;
+    line-height: normal;
+    box-sizing: border-box;
+  }
+
+  .modal-form .form-input,
+  .modal-form .form-select,
+  .modal-form input[type="date"],
+  .modal-form select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .modal-form .input-prefix-wrap {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .modal-form .input-prefix-wrap .form-input {
+    width: 100%;
+  }
+
+  .modal-form .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .modal-form .form-row > .form-group,
+  .modal-form .form-row > .col-6 {
+    width: 100%;
+    max-width: 100%;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-backdrop {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .modal-dialog,
+  .modal-dialog-sm,
+  .modal-dialog-large {
+    max-width: 100%;
+  }
+
+  .gift-card-header {
+    gap: 0.5rem;
+  }
+
+  .gift-status-select {
+    min-width: 104px;
+    max-width: 132px;
+  }
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    overscroll-behavior-x: none;
+  }
+}
+
+/* Form field consistency: match every single-line dropdown to text inputs. */
+@media (min-width: 601px) {
+  .modal-form .form-input:not(textarea),
+  .modal-form .form-select,
+  .modal-form select:not(.gift-status-select),
+  .modal-form input[type="date"],
+  .modal-form input[type="number"] {
+    height: 58px;
+    min-height: 58px;
+    box-sizing: border-box;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: normal;
+    vertical-align: middle;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-form .form-input:not(textarea),
+  .modal-form .form-select,
+  .modal-form select:not(.gift-status-select),
+  .modal-form input[type="date"],
+  .modal-form input[type="number"] {
+    height: 48px;
+    min-height: 48px;
+    box-sizing: border-box;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: normal;
+  }
+}
+
+
+/* ===================================================================
+   GIFTLY MOBILE QA — V3 OVERRIDES
+   These rules intentionally come last to override earlier mobile rules.
+   Desktop styles are not changed.
+   =================================================================== */
+@media screen and (max-width: 768px) {
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .app-container, .main-content, .view-section, #view-gifts, #gifts-grid {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  /* Keep the closed drawer fully outside the viewport; remove its edge line. */
+  .sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: min(270px, 84vw) !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    border: 0 !important;
+    outline: 0 !important;
+    transform: translate3d(-110%, 0, 0) !important;
+    visibility: hidden !important;
+    box-shadow: none !important;
+    will-change: transform;
+  }
+
+  .sidebar.mobile-open {
+    transform: translate3d(0, 0, 0) !important;
+    visibility: visible !important;
+    box-shadow: var(--shadow-modal) !important;
+  }
+
+  /* Section filter controls: one consistent, comfortable mobile tap height. */
+  .filter-bar, .filter-controls {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .filter-select, .filter-controls select {
+    height: 48px !important;
+    min-height: 48px !important;
+    line-height: normal !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Gift status control inside each Gift Vault card remains compact. */
+  .gift-card-header {
+    min-width: 0;
+    max-width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .gift-status-select {
+    width: auto !important;
+    min-width: 104px !important;
+    max-width: 132px !important;
+    min-height: 40px !important;
+    height: 40px !important;
+    flex: 0 1 auto !important;
+    line-height: 1.2 !important;
+    box-sizing: border-box !important;
+  }
+
+  #gifts-grid > *, #gifts-grid .gift-card, #gifts-grid .card {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* iOS Safari modal geometry. Use viewport-relative width rather than 100%
+   so the dialog cannot expand to the phone edges if an ancestor is oversized. */
+@media screen and (max-width: 600px) {
+  .modal-backdrop {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    box-sizing: border-box !important;
+    padding: max(12px, env(safe-area-inset-top)) 16px max(12px, env(safe-area-inset-bottom)) !important;
+    display: none;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  .modal-backdrop.active {
+    display: flex !important;
+  }
+
+  .modal-backdrop > .modal-dialog,
+  .modal-backdrop > .modal-dialog-sm,
+  .modal-backdrop > .modal-dialog-large {
+    position: relative !important;
+    display: flex !important;
+    flex: 0 1 auto !important;
+    flex-direction: column !important;
+    width: calc(100vw - 32px) !important;
+    max-width: 480px !important;
+    min-width: 0 !important;
+    height: auto !important;
+    max-height: calc(100vh - 32px) !important;
+    max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 32px) !important;
+    margin: auto !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  #modal-recipient-profile > .modal-dialog {
+    max-width: 520px !important;
+  }
+
+  #modal-confirm > .modal-dialog {
+    max-width: 420px !important;
+    max-height: min(560px, calc(100dvh - 40px)) !important;
+  }
+
+  .modal-backdrop > .modal-dialog > .modal-header {
+    flex: 0 0 auto !important;
+    min-width: 0;
+  }
+
+  .modal-backdrop > .modal-dialog > .modal-form {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    flex-direction: column !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .modal-form > .form-body,
+  .modal-backdrop > .modal-dialog > .modal-body {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .modal-backdrop > .modal-dialog > .modal-footer,
+  .modal-form > .modal-footer {
+    position: relative !important;
+    z-index: 2 !important;
+    display: flex !important;
+    flex: 0 0 auto !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) !important;
+    background: var(--color-bg) !important;
+  }
+
+  .modal-footer .btn {
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 48px !important;
+    white-space: normal;
+  }
+
+  /* Native date controls should align with the other full-width controls. */
+  .modal-form input[type="date"],
+  .modal-form input[type="datetime-local"] {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    box-sizing: border-box !important;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .modal-form .form-group,
+  .modal-form .form-row > .form-group,
+  .modal-form .form-row > .col-6 {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .modal-form .form-row {
+    min-width: 0 !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .modal-backdrop {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .modal-backdrop > .modal-dialog,
+  .modal-backdrop > .modal-dialog-sm,
+  .modal-backdrop > .modal-dialog-large {
+    width: calc(100vw - 32px) !important;
+    max-width: calc(100vw - 32px) !important;
+  }
+}
+
+
+/* V4: iPhone date controls and Safari visible-viewport footer fit. */
+@media screen and (max-width: 600px) {
+  .modal-form input[type="date"],
+  .modal-form input[type="datetime-local"] {
+    width: 100% !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
+    padding: 0 14px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    font: inherit !important;
+    line-height: 48px !important;
+    text-align: left !important;
+    vertical-align: middle !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+  }
+
+  /* Use the actual visible Safari viewport, not the larger layout viewport. */
+  .modal-backdrop {
+    top: var(--giftly-visual-top, 0px) !important;
+    height: var(--giftly-visual-height, 100dvh) !important;
+    max-height: var(--giftly-visual-height, 100dvh) !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    align-items: center !important;
+  }
+
+  .modal-backdrop > .modal-dialog,
+  .modal-backdrop > .modal-dialog-sm,
+  .modal-backdrop > .modal-dialog-large {
+    max-height: calc(var(--giftly-visual-height, 100dvh) - 24px) !important;
+  }
+
+  .modal-backdrop > .modal-dialog > .modal-footer,
+  .modal-form > .modal-footer {
+    padding-bottom: max(14px, env(safe-area-inset-bottom)) !important;
+    flex-shrink: 0 !important;
   }
 }
